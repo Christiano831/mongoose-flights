@@ -3,7 +3,8 @@ const Flight = require('../models/flight');
 module.exports = {
     index,
     create,
-    new: newFlight
+    new: newFlight,
+    show
 }
 
 function index(req, res) {
@@ -30,4 +31,10 @@ function newFlight(req, res) {
     // Format the date for the value attribute of the input
     const departsDate = dt.toISOString().slice(0, 16);
     res.render('flights/new', {departsDate});
+}
+
+function show(req, res) {
+    Flight.findById(req.params.id, function (err, flightDB) {
+        res.render('flights/show', {title: 'Flight Detail', flight: flightDB});
+    });
 }
