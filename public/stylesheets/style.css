@@ -57,3 +57,19 @@ tr:nth-child(even) {
 .green {
   color: green;
 }
+
+.smaller {
+  width: 100px;
+}
+
+.center {
+  text-align: center;
+}
+
+#tickets {
+  background-color: black;
+  border-radius: 15px;
+  color: white;
+  font-size: 30px;
+}
+

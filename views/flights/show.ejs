@@ -14,20 +14,49 @@
         <a href="../flights/new">Create flights</a>
       </div>
     <section>
-        <div>Flight: <%= flight.airline %></div>
-        <div></div>
-        <div>Airport: <%= flight.airport %></div>
-        <div></div>
-        <div>Flight Number: <%= flight.flightNo %></div>
-        <div></div>
-        <div>Departure: <%= flight.departs %></div>
-        <div></div>
-        <div>Destinations: </div>
-        <% flight.destinations.forEach(f => { %>  
-            <div><%= f.airport %> <%= f.arrival %></div>
-            <div></div>
+        <table>
+            <th class="center" colspan="2">Flight</th>
+            <tr>
+                <td>Flight: </td>
+                <td><%= flight.airline %></td>
+            </tr>
+            <tr>
+                <td>Airport: </td>
+                <td><%= flight.airport %></td>
+            </tr>
+            <tr>
+                <td>Flight Number: </td>
+                <td><%= flight.flightNo %></td>
+            </tr>
+            <tr>
+                <td>Departure: </td>
+                <td><%= flight.departs %></td>
+            </tr>
+        </table>
+        
+        <table>
+            <th class="center" colspan="2">Destinations</th>
+            <% flight.destinations.forEach(f => { %>  
+                <tr>
+                    <td><%= f.airport %> </td>
+                    <td><%= f.arrival %></td>
             <% }); %>
+                </tr>
+        </table>    
+
+        <table>
+            <th class="center" colspan="2">Seats</th>
+            <% tickets.forEach(function(t) { %>
+                <tr>
+                    <td class="smaller">Seat: <%= t.seat %></td>
+                    <td>Price: $<%= t.price %></td>
+                </tr>
+            <% }) %> 
+            </table>
       </section>
+      <div>
+          <button id="tickets"><a href="/flights/<%= flight._id %>/tickets/new">Add Seats</a></button>
+      </div>
         
       <br><br><h2>Add a new destination to trip</h2>
        <form id="add-destination-form" method="POST"

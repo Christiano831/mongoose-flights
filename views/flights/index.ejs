@@ -24,11 +24,12 @@
         </thead>
         <tbody>
             <% flights.forEach(f => { %>
+              <% const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; %> 
                     <tr>
                         <td><%= f.airline %></td>
                         <td><%= f.airport %></td>
                         <td><%= f.flightNo %></td>
-                        <td class="<%= f.departs<Date.now() ? 'red' : 'green' %>"><%= f.departs %></td>
+                        <td class="<%= f.departs<Date.now() ? 'red' : 'green' %>"><%= f.departs.toLocaleDateString(undefined, options) %></td>
                         <td><a href="/flights/<%= f._id %>">Details</a></td>
                     </tr>
                     <% }); %>
